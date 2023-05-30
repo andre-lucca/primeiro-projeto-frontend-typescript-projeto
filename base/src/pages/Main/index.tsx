@@ -1,8 +1,10 @@
+import { useNavigate } from 'react-router-dom'
+
 import logoImg from '../../assets/logo.svg'
 
 import './styles.css'
 
-type Teacher = {
+export type Teacher = {
   id: number
   name: string
   avatar: string
@@ -83,14 +85,26 @@ const teachers: Teacher[] = [
   }
 ]
 
-export function Main() {
+export function Main(): JSX.Element {
+  const navigateTo = useNavigate()
+
+  const handleDetailTeacher = (teacher: Teacher): void => {
+    navigateTo('/detail', {
+      state: teacher
+    })
+  }
+
   return (
     <section className="main-container">
       <img className="logo" src={logoImg} />
       <ul className="card-list">
         {
           teachers.map(teacher => (
-            <li className="card-container">
+            <li
+              key={teacher.id}
+              className="card-container"
+              onClick={() => handleDetailTeacher(teacher)}
+            >
               <img
                 className="profile-image"
                 src={teacher.avatar}

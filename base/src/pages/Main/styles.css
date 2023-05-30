@@ -48,10 +48,12 @@
 
 .profile-image {
   width: 8.75rem;
+  height: 8.75rem;
+  padding: 4px;
   margin-bottom: 1rem;
 
-  border: 4px solid #ffffff;
   border-radius: 50%;
+  background-color: #fff;
 }
 
 .card-container h3 {
